@@ -1,4 +1,4 @@
-# Instaclone Frontend
+# Insta Frontend
 
 **NOTE: As of 10-06-2022 19:49 IST, I am archiving this repository. It was fun while it lasted.**
 
