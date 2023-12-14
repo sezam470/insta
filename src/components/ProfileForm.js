@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import Button from "../styles/Button";
@@ -87,7 +87,7 @@ export const Wrapper = styled.div`
 `;
 
 const ProfileForm = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   const [newAvatar, setNewAvatar] = useState("");
 
@@ -127,7 +127,7 @@ const ProfileForm = () => {
       .then((res) => {
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
-        history.push(`/${body.username || user.username}`);
+        navigate(`/${body.username || user.username}`);
       })
       .catch((err) => toast.error(err.message));
   };

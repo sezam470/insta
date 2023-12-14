@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FeedContext } from "../context/FeedContext";
 import { client } from "../utils";
 
 const DeletePost = ({ postId, closeModal, goToHome }) => {
   const { feed, setFeed } = useContext(FeedContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleDeletePost = () => {
     closeModal();
 
     if (goToHome) {
-      history.push(`/`);
+      navigate(`/`);
     }
 
     setFeed(feed.filter((post) => post._id !== postId));

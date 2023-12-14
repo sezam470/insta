@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import LikePost from "../components/LikePost";
 import SavePost from "../components/SavePost";
@@ -96,7 +96,7 @@ const Wrapper = styled.div`
 `;
 
 const DetailedPost = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { postId } = useParams();
 
   const comment = useInput("");
@@ -171,7 +171,7 @@ const DetailedPost = () => {
         <div className="post-header-wrapper">
           <div className="post-header">
             <Avatar
-              onClick={() => history.push(`/${post.user?.username}`)}
+              onClick={() => navigate(`/${post.user?.username}`)}
               className="pointer avatar"
               src={post.user?.avatar}
               alt="avatar"
@@ -179,7 +179,7 @@ const DetailedPost = () => {
 
             <h3
               className="pointer"
-              onClick={() => history.push(`/${post.user?.username}`)}
+              onClick={() => navigate(`/${post.user?.username}`)}
             >
               {post.user?.username}
             </h3>

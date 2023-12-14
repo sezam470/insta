@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LikePost from "./LikePost";
 import SavePost from "./SavePost";
 import Comment from "./Comment";
@@ -31,11 +31,11 @@ const ModalContentWrapper = styled.div`
 `;
 
 export const ModalContent = ({ hideGotoPost, postId, closeModal }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleGoToPost = () => {
     closeModal();
-    history.push(`/p/${postId}`);
+    navigate(`/p/${postId}`);
   };
 
   return (
@@ -123,7 +123,7 @@ export const PostWrapper = styled.div`
 
 const Post = ({ post }) => {
   const comment = useInput("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
@@ -154,11 +154,11 @@ const Post = ({ post }) => {
             className="pointer"
             src={post.user?.avatar}
             alt="avatar"
-            onClick={() => history.push(`/${post.user?.username}`)}
+            onClick={() => navigate(`/${post.user?.username}`)}
           />
           <h3
             className="pointer"
-            onClick={() => history.push(`/${post.user?.username}`)}
+            onClick={() => navigate(`/${post.user?.username}`)}
           >
             {post.user?.username}
           </h3>
@@ -185,7 +185,7 @@ const Post = ({ post }) => {
           incLikes={incLikes}
           decLikes={decLikes}
         />
-        <CommentIcon onClick={() => history.push(`/p/${post._id}`)} />
+        <CommentIcon onClick={() => navigate(`/p/${post._id}`)} />
         <InboxIcon />
         <SavePost isSaved={post.isSaved} postId={post._id} />
       </div>
@@ -199,7 +199,7 @@ const Post = ({ post }) => {
 
         <p>
           <span
-            onClick={() => history.push(`/${post.user?.username}`)}
+            onClick={() => navigate(`/${post.user?.username}`)}
             className="pointer username bold"
           >
             {post.user?.username}
@@ -209,7 +209,7 @@ const Post = ({ post }) => {
 
         {post.commentsCount > 2 && (
           <span
-            onClick={() => history.push(`/p/${post._id}`)}
+            onClick={() => navigate(`/p/${post._id}`)}
             className="view-comments"
           >
             View all {post.commentsCount} comments

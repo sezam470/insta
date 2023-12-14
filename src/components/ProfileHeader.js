@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Follow from "./Follow";
 import Modal from "./Modal";
 import Button from "../styles/Button";
@@ -165,7 +165,7 @@ const ModalContentWrapper = styled.div`
 `;
 
 const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div style={{ maxHeight: "400px", overflowY: "auto" }}>
@@ -180,7 +180,7 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
               className="pointer"
               onClick={() => {
                 closeModal();
-                history.push(`/${user.username}`);
+                navigate(`/${user.username}`);
               }}
               src={user.avatar}
               alt="avatar"
@@ -190,7 +190,7 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
                 className="pointer"
                 onClick={() => {
                   closeModal();
-                  history.push(`/${user.username}`);
+                  navigate(`/${user.username}`);
                 }}
               >
                 {user.username}
@@ -206,7 +206,7 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
 };
 
 const ProfileHeader = ({ profile }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
   const [showFollowersModal, setFollowersModal] = useState(false);
@@ -240,7 +240,7 @@ const ProfileHeader = ({ profile }) => {
               <div className="options">
                 <Button
                   secondary
-                  onClick={() => history.push("/accounts/edit")}
+                  onClick={() => navigate("/accounts/edit")}
                 >
                   Edit Profile
                 </Button>

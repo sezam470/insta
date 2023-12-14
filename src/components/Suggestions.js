@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Follow from "./Follow";
 import Avatar from "../styles/Avatar";
@@ -67,13 +67,13 @@ const StyledUserCard = styled.div`
 `;
 
 export const UserCard = ({ user }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <StyledUserCard>
       <Avatar
         className="pointer"
-        onClick={() => history.push(`/${user.username}`)}
+        onClick={() => navigate(`/${user.username}`)}
         lg
         src={user.avatar}
         alt="avatar"
@@ -82,7 +82,7 @@ export const UserCard = ({ user }) => {
       <div className="user-info">
         <h3
           className="pointer"
-          onClick={() => history.push(`/${user.username}`)}
+          onClick={() => navigate(`/${user.username}`)}
         >
           {user.username}
         </h3>

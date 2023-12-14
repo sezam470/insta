@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { HeartIcon, CommentIcon } from "./Icons";
 
@@ -104,7 +104,7 @@ const Wrapper = styled.div`
 `;
 
 const ProfilePreview = ({ posts }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
@@ -112,7 +112,7 @@ const ProfilePreview = ({ posts }) => {
         <div
           key={post._id}
           className="container-overlay"
-          onClick={() => history.push(`/p/${post._id}`)}
+          onClick={() => navigate(`/p/${post._id}`)}
         >
           <img src={post.files[0]} alt="post" />
           <div className="overlay">
