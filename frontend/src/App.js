@@ -16,7 +16,7 @@ const App = () => {
     <StyledThemeProvider theme={theme}>
       <GlobalStyle />
       <ToastContainer autoClose={2000} closeButton={false} />
-      <Routing />
+      {user ? <Routing /> : <Auth />}
     </StyledThemeProvider>
   );
 };
