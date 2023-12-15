@@ -65,6 +65,7 @@ const Login = ({ signup }) => {
 
     try {
       const { token } = await client("/auth/login", { body });
+      console.log('token', token);
       localStorage.setItem("token", token);
     } catch (err) {
       return toast.error(err.message);

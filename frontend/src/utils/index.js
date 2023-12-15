@@ -56,7 +56,7 @@ export const client = (endpoint, { body, ...customConfig } = {}) => {
       const data = await res.json();
 
       if (res.ok) {
-        return data;
+        return data.data;
       } else {
         return Promise.reject(data);
       }
