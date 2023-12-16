@@ -13,8 +13,10 @@ module.exports = {
      static: {
       directory: path.join(__dirname, "/"),
     },
-     port: 8081,
-     open: true
+    //  port: 8081,
+    port: 3001, 
+    proxy: { "/api/**": { target: 'http://localhost:3001', secure: false }  },
+    open: true
    },
     module:{
         rules:[   //загрузчик для jsx
