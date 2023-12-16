@@ -12,6 +12,12 @@ const App = () => {
   const { user } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
 
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => console.log(data.message));
+  }, []);
+
   return (
     <StyledThemeProvider theme={theme}>
       <GlobalStyle />

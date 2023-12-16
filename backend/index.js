@@ -24,6 +24,11 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
+// All other GET requests not handled before will return our React app
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+// });
+
 app.post('/api/auth/login', async (req, res) => {
   // console.log('body', body);
   const { email, password } = req.body;
