@@ -73,7 +73,7 @@ export const UserCard = ({ user }) => {
     <StyledUserCard>
       <Avatar
         className="pointer"
-        onClick={() => navigate(`/${user.username}`)}
+        onClick={() => navigate(`/${user.userName}`)}
         lg
         src={user.avatar}
         alt="avatar"
@@ -82,11 +82,11 @@ export const UserCard = ({ user }) => {
       <div className="user-info">
         <h3
           className="pointer"
-          onClick={() => navigate(`/${user.username}`)}
+          onClick={() => navigate(`/${user.userName}`)}
         >
-          {user.username}
+          {user.userName}
         </h3>
-        <span>{user.fullname}</span>
+        <span>{user.fullName}</span>
       </div>
     </StyledUserCard>
   );
@@ -109,7 +109,7 @@ const Suggestions = () => {
       <div className="suggestions">
         <h3>Suggestions For You</h3>
         {users.slice(0, 4).map((user) => (
-          <div key={user.username} className="suggestions-usercard">
+          <div key={user.userName} className="suggestions-usercard">
             <UserCard user={user} />
             <Follow nobtn isFollowing={user.isFollowing} userId={user._id} />
           </div>

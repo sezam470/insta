@@ -1,13 +1,4 @@
 import React, { useState, createContext } from "react";
-import avatar from "../assets/default_avatar.jpg";
-
-// const testUser = {
-//   avatar,
-//   username: 'test name',
-//   fullname: 'test fullname',
-//   _id: '0',
-//   isFollowing: false,
-// }
 
 export const UserContext = createContext(null);
 

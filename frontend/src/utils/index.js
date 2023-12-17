@@ -51,7 +51,7 @@ export const client = (endpoint, { body, ...customConfig } = {}) => {
     config.body = JSON.stringify(body);
   }
 
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`, config).then(
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${endpoint}`, config).then(
     async (res) => {
       const data = await res.json();
 

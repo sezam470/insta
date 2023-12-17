@@ -9,35 +9,35 @@ import logo from "../assets/logo.png";
 const Signup = ({ login }) => {
   const { setUser } = useContext(UserContext);
   const email = useInput("");
-  const fullname = useInput("");
-  const username = useInput("");
+  const fullName = useInput("");
+  const userName = useInput("");
   const password = useInput("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!email.value || !password.value || !username.value || !fullname.value) {
+    if (!email.value || !password.value || !userName.value || !fullName.value) {
       return toast.error("Please fill in all the fields");
     }
 
-    if (username.value === "explore") {
+    if (userName.value === "explore") {
       return toast.error(
-        "The username you entered is not acceptable, try again"
+        "The userName you entered is not acceptable, try again"
       );
     }
 
     const re = /^[a-z0-9]+$/i;
-    if (re.exec(username.value) === null) {
+    if (re.exec(userName.value) === null) {
       return toast.error(
-        "The username you entered is not acceptable, try again"
+        "The userName you entered is not acceptable, try again"
       );
     }
 
     const body = {
       email: email.value,
       password: password.value,
-      username: username.value,
-      fullname: fullname.value,
+      userName: userName.value,
+      fullName: fullName.value,
     };
 
     try {
@@ -48,11 +48,11 @@ const Signup = ({ login }) => {
     }
 
     const user = await client("/auth/me");
-    setUser(user.data);
-    localStorage.setItem("user", JSON.stringify(user.data));
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
 
-    fullname.setValue("");
-    username.setValue("");
+    fullName.setValue("");
+    userName.setValue("");
     password.setValue("");
     email.setValue("");
   };
@@ -71,14 +71,14 @@ const Signup = ({ login }) => {
         <input
           type="text"
           placeholder="Full Name"
-          value={fullname.value}
-          onChange={fullname.onChange}
+          value={fullName.value}
+          onChange={fullName.onChange}
         />
         <input
           type="text"
-          placeholder="Username"
-          value={username.value}
-          onChange={username.onChange}
+          placeholder="userName"
+          value={userName.value}
+          onChange={userName.onChange}
         />
         <input
           type="password"

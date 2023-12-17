@@ -39,21 +39,21 @@ const Wrapper = styled.div`
 const Profile = () => {
   const [tab, setTab] = useState("POSTS");
 
-  const { username } = useParams();
+  const { userName } = useParams();
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const [deadend, setDeadend] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    client(`/users/${username}`)
+    client(`/users/${userName}`)
       .then((res) => {
         setLoading(false);
         setDeadend(false);
         setProfile(res.data);
       })
       .catch((err) => setDeadend(true));
-  }, [username]);
+  }, [userName]);
 
   if (!deadend && loading) {
     return <Loader />;

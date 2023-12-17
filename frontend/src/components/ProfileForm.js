@@ -91,8 +91,8 @@ const ProfileForm = () => {
   const { user, setUser } = useContext(UserContext);
   const [newAvatar, setNewAvatar] = useState("");
 
-  const fullname = useInput(user.fullname);
-  const username = useInput(user.username);
+  const fullName = useInput(user.fullName);
+  const userName = useInput(user.userName);
   const bio = useInput(user.bio);
   const website = useInput(user.website);
 
@@ -107,17 +107,17 @@ const ProfileForm = () => {
   const handleEditProfile = (e) => {
     e.preventDefault();
 
-    if (!fullname.value) {
+    if (!fullName.value) {
       return toast.error("The name field should not be empty");
     }
 
-    if (!username.value) {
-      return toast.error("The username field should not be empty");
+    if (!userName.value) {
+      return toast.error("The userName field should not be empty");
     }
 
     const body = {
-      fullname: fullname.value,
-      username: username.value,
+      fullName: fullName.value,
+      userName: userName.value,
       bio: bio.value,
       website: website.value,
       avatar: newAvatar || user.avatar,
@@ -127,7 +127,7 @@ const ProfileForm = () => {
       .then((res) => {
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
-        navigate(`/${body.username || user.username}`);
+        navigate(`/${body.userName || user.userName}`);
       })
       .catch((err) => toast.error(err.message));
   };
@@ -152,7 +152,7 @@ const ProfileForm = () => {
             />
           </div>
           <div className="change-avatar-meta">
-            <h2>{user.username}</h2>
+            <h2>{user.userName}</h2>
             <label htmlFor="change-avatar-link">
               <span>Change Profile Photo</span>
             </label>
@@ -169,17 +169,17 @@ const ProfileForm = () => {
           <label className="bold">Name</label>
           <input
             type="text"
-            value={fullname.value}
-            onChange={fullname.onChange}
+            value={fullName.value}
+            onChange={fullName.onChange}
           />
         </div>
 
         <div className="input-group">
-          <label className="bold">Username</label>
+          <label className="bold">userName</label>
           <input
             type="text"
-            value={username.value}
-            onChange={username.onChange}
+            value={userName.value}
+            onChange={userName.onChange}
           />
         </div>
 

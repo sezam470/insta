@@ -180,7 +180,7 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
               className="pointer"
               onClick={() => {
                 closeModal();
-                navigate(`/${user.username}`);
+                navigate(`/${user.userName}`);
               }}
               src={user.avatar}
               alt="avatar"
@@ -190,12 +190,12 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
                 className="pointer"
                 onClick={() => {
                   closeModal();
-                  navigate(`/${user.username}`);
+                  navigate(`/${user.userName}`);
                 }}
               >
-                {user.username}
+                {user.userName}
               </h3>
-              <span>{user.fullname}</span>
+              <span>{user.fullName}</span>
             </div>
           </div>
           <Follow isFollowing={user.isFollowing} userId={user._id} />
@@ -235,7 +235,7 @@ const ProfileHeader = ({ profile }) => {
         <img className="avatar" src={profile?.avatar} alt="avatar" />
         <div className="profile-info">
           <div className="profile-meta">
-            <h2>{profile?.username}</h2>
+            <h2>{profile?.userName}</h2>
             {profile?.isMe ? (
               <div className="options">
                 <Button
@@ -291,7 +291,7 @@ const ProfileHeader = ({ profile }) => {
           </div>
 
           <div className="bio">
-            <span className="bold">{profile?.fullname}</span>
+            <span className="bold">{profile?.fullName}</span>
             <p>{profile?.bio}</p>
             <a
               href={profile?.website}
@@ -338,7 +338,7 @@ const ProfileHeader = ({ profile }) => {
           )}
         </div>
         <div className="mobile-bio">
-          <span className="bold">{profile?.fullname}</span>
+          <span className="bold">{profile?.fullName}</span>
           <p>{profile?.bio}</p>
           <a href={profile?.website} target="_blank" rel="noopener noreferrer">
             {profile?.website}

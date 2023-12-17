@@ -171,7 +171,7 @@ const DetailedPost = () => {
         <div className="post-header-wrapper">
           <div className="post-header">
             <Avatar
-              onClick={() => navigate(`/${post.user?.username}`)}
+              onClick={() => navigate(`/${post.user?.userName}`)}
               className="pointer avatar"
               src={post.user?.avatar}
               alt="avatar"
@@ -179,9 +179,9 @@ const DetailedPost = () => {
 
             <h3
               className="pointer"
-              onClick={() => navigate(`/${post.user?.username}`)}
+              onClick={() => navigate(`/${post.user?.userName}`)}
             >
-              {post.user?.username}
+              {post.user?.userName}
             </h3>
           </div>
           {post.isMine && <MoreIcon onClick={() => setShowModal(true)} />}

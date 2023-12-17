@@ -19,7 +19,7 @@ const Comment = ({ comment, hideavatar }) => {
       {!hideavatar && (
         <Avatar
           className="pointer"
-          onClick={() => navigate(`/${comment.user.username}`)}
+          onClick={() => navigate(`/${comment.user.userName}`)}
           src={comment.user.avatar}
           alt="avatar"
         />
@@ -27,10 +27,10 @@ const Comment = ({ comment, hideavatar }) => {
 
       <p>
         <span
-          onClick={() => navigate(`/${comment.user.username}`)}
+          onClick={() => navigate(`/${comment.user.userName}`)}
           className="bold pointer"
         >
-          {comment.user.username}
+          {comment.user.userName}
         </span>
         {comment.text}
       </p>

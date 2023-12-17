@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     margin-bottom: 1rem;
   }
 
-  .fullname {
+  .fullName {
     font-size: 0.9rem;
     color: ${(props) => props.theme.secondaryColor};
   }
@@ -29,10 +29,10 @@ const Wrapper = styled.div`
 
 const ProfilePreview = ({ user }) => {
   return (
-    <Wrapper key={user.username}>
+    <Wrapper key={user.userName}>
       <img src={avatar} alt="avatar" />
-      <h4>{user.username}</h4>
-      <span className="fullname">{user.fullname}</span>
+      <h4>{user.userName}</h4>
+      <span className="fullName">{user.fullName}</span>
       <Button>Follow</Button>
     </Wrapper>
   );

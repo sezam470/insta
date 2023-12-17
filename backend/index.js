@@ -46,6 +46,11 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+app.get("/api/auth/me", (req, res) => {
+  const user = require('./api/user.json');
+  res.json({data: user});
+});
+
 app.use(handleErrors);
  
 app.listen(PORT, () => {

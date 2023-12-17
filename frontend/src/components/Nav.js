@@ -81,7 +81,7 @@ const Nav = () => {
             <HeartIcon />
           </li>
           <li>
-            <Link to={`/${user.username}`}>
+            <Link to={`/${user.userName}`}>
               <img
                 style={{
                   width: "24px",

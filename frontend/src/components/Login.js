@@ -65,16 +65,15 @@ const Login = ({ signup }) => {
 
     try {
       const { token } = await client("/auth/login", { body });
-      console.log('token', token);
       localStorage.setItem("token", token);
     } catch (err) {
       return toast.error(err.message);
     }
 
     const user = await client("/auth/me");
-    localStorage.setItem("user", JSON.stringify(user.data));
-    setUser(user.data);
-    toast.success("Login successful");
+    localStorage.setItem("user", JSON.stringify(user));
+    setUser(user);
+    toast.success("Авторизация успешна");
 
     email.setValue("");
     password.setValue("");

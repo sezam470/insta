@@ -96,7 +96,7 @@ export const PostWrapper = styled.div`
     padding-top: 0.3rem;
   }
 
-  .username {
+  .userName {
     padding-right: 0.3rem;
   }
 
@@ -154,13 +154,13 @@ const Post = ({ post }) => {
             className="pointer"
             src={post.user?.avatar}
             alt="avatar"
-            onClick={() => navigate(`/${post.user?.username}`)}
+            onClick={() => navigate(`/${post.user?.userName}`)}
           />
           <h3
             className="pointer"
-            onClick={() => navigate(`/${post.user?.username}`)}
+            onClick={() => navigate(`/${post.user?.userName}`)}
           >
-            {post.user?.username}
+            {post.user?.userName}
           </h3>
         </div>
 
@@ -199,10 +199,10 @@ const Post = ({ post }) => {
 
         <p>
           <span
-            onClick={() => navigate(`/${post.user?.username}`)}
-            className="pointer username bold"
+            onClick={() => navigate(`/${post.user?.userName}`)}
+            className="pointer userName bold"
           >
-            {post.user?.username}
+            {post.user?.userName}
           </span>
           {post.caption}
         </p>

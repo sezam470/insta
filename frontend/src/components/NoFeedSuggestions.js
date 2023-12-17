@@ -77,18 +77,18 @@ const NoFeedSuggestions = () => {
             <div className="user-info">
               <Avatar
                 className="pointer"
-                onClick={() => navigate(`/${user.username}`)}
+                onClick={() => navigate(`/${user.userName}`)}
                 src={user.avatar}
                 alt="avatar"
               />
               <div className="user-meta">
                 <h4
                   className="pointer"
-                  onClick={() => navigate(`/${user.username}`)}
+                  onClick={() => navigate(`/${user.userName}`)}
                 >
-                  {user.username}
+                  {user.userName}
                 </h4>
-                <span className="secondary">{user.fullname}</span>
+                <span className="secondary">{user.fullName}</span>
               </div>
             </div>
             <Follow isFollowing={user.isFollowing} userId={user._id} />
