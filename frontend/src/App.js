@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
@@ -11,12 +11,30 @@ import { ThemeContext } from "./context/ThemeContext";
 const App = () => {
   const { user } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
+  const [apiRequest, setApiRequest] = useState(null);
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => console.log(data.message));
-  }, []);
+  const callBackendAPI = async () => {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api`);
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+
+    return body;
+  };
+
+  useEffect(() => {
+    callBackendAPI()
+    .then((data) => setApiRequest(data))
+    .catch(err => setApiRequest({error: 'Ошибка сервера'}));
+  }, [])
+
+  if (apiRequest?.error) {
+    return (
+      <p>{apiRequest?.message}</p>
+    )
+  }
 
   return (
     <StyledThemeProvider theme={theme}>

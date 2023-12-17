@@ -1,17 +1,19 @@
 import React from "react";
-import { render } from "react-dom";
+import { createRoot } from 'react-dom/client';
 import App from "./App";
 import { UserProvider } from "./context/UserContext";
 import { FeedProvider } from "./context/FeedContext";
 import { ThemeProvider } from "./context/ThemeContext";
 
-render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+root.render(
   <UserProvider>
     <FeedProvider>
       <ThemeProvider>
         <App />
       </ThemeProvider>
     </FeedProvider>
-  </UserProvider>,
-  document.getElementById("root")
+  </UserProvider>
 );

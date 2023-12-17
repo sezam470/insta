@@ -25,7 +25,7 @@ app.post('/upload', (req, res) => {
         throw new GeneralError('Произошла ошибка');
       }
       // возвращаем ответ с именем файла и его расположением
-      return res.send({name: myFile.name, path: `/${myFile.name}`});
+      return res.sendStatus({name: myFile.name, path: `/${myFile.name}`});
   });
 })
 
