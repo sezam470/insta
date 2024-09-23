@@ -4,6 +4,7 @@ import styled from "styled-components";
 import NewPost from "./NewPost";
 import Search from "./Search";
 import { UserContext } from "../context/UserContext";
+import { client } from "../utils";
 import navlogo from "../assets/navlogo.png";
 import { HomeIcon, ExploreIcon, HeartIcon } from "./Icons";
 
@@ -53,7 +54,10 @@ const NavWrapper = styled.div`
   }
 `;
 
-const Nav = () => {
+const Nav = async () => {
+  // const user = await client("/auth/me");
+  // console.log('user', user);
+  // localStorage.setItem("user", JSON.stringify(user));
   const { user } = useContext(UserContext);
 
   return (
